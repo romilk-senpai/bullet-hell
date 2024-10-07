@@ -1,5 +1,4 @@
-pub(crate) mod context;
-pub(crate) mod wgpu;
+pub(crate) mod renderer;
+pub(crate) mod buffer;
 
-
-pub use crate::graphics::wgpu::WgpuContext;
+pub use renderer::Renderer;
