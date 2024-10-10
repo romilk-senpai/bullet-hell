@@ -1,6 +1,9 @@
+use std::sync::Arc;
+
 use wgpu::Color;
 use wgpu::RenderPipeline;
 
+use wgpu::Surface;
 use winit::dpi::PhysicalSize;
 use winit::window::Window;
 
@@ -28,7 +31,7 @@ pub struct Renderer<'a> {
 
 impl<'a> Renderer<'a> {
     // Creating some of the wgpu types requires async code
-    pub async fn new(window: &'a Window, config: RendererConfig) -> Renderer<'a> {
+    pub async fn new(window: &Window, config: RendererConfig) -> Renderer<'a> {
         // The instance is a handle to our GPU
         // Backends::all => Vulkan + Metal + DX12 + Browser WebGPU
         let instance = wgpu::Instance::new(wgpu::InstanceDescriptor {
@@ -40,6 +43,10 @@ impl<'a> Renderer<'a> {
         });
 
         let surface = instance.create_surface(window).unwrap();
+
+        let surface_arc: Arc<Surface>;
+        
+         surface_arc = Arc::new(surface);
 
         let adapter = instance
             .request_adapter(&wgpu::RequestAdapterOptions {

@@ -1,5 +1,5 @@
-# Bullet Hell Engine
-Learning Rust while doing a cross-platform bullet hell engine and a game
+# Bullet Hell
+Learning Rust while doing a cross-platform bullet hell game
 
 ### Useful resources used:
 * [Rust docs](https://doc.rust-lang.org/rust-by-example)
